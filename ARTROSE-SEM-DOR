@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha VSL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18);
+            padding: 36px 28px 24px 28px;
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1.2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .countdown-offer {
+            background: #fffbe6;
+            border: 2px dashed #ff512f;
+            border-radius: 10px;
+            padding: 12px 0;
+            margin-bottom: 18px;
+            font-weight: 600;
+            color: #d35400;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .offer-text i {
+            color: #ff512f;
+            margin-right: 8px;
+        }
+        #countdown {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-left: 8px;
+        }
+        .vsl-video {
+            width: 100%;
+            max-width: 460px;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(44, 62, 80, 0.12);
+            margin-bottom: 24px;
+            border: 2px solid #e0eafc;
+            aspect-ratio: 16 / 9;
+        }
+        .buy-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%);
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 18px 48px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 2px 12px rgba(221, 36, 118, 0.18);
+            transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            animation: pulse 1.5s infinite;
+        }
+        .buy-btn:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+            z-index: -1;
+        }
+        .buy-btn:hover {
+            background: linear-gradient(90deg, #dd2476 0%, #ff512f 100%);
+            transform: scale(1.06);
+            box-shadow: 0 4px 18px rgba(221, 36, 118, 0.22);
+        }
+        .buy-btn:hover:after {
+            width: 220px;
+            height: 80px;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(221,36,118,0.3);}
+            70% { box-shadow: 0 0 0 10px rgba(221,36,118,0);}
+            100% { box-shadow: 0 0 0 0 rgba(221,36,118,0);}
+        }
+        .trust-section {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+        .trust-icons {
+            display: flex;
+            gap: 18px;
+            font-size: 2.1rem;
+            color: #3b5998;
+            justify-content: center;
+        }
+        .guarantee {
+            background: #e0eafc;
+            border-radius: 8px;
+            padding: 12px 18px;
+            font-size: 1.05rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+        }
+        .guarantee i {
+            color: #27ae60;
+            font-size: 1.5rem;
+        }
+        .title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 22px;
+        }
+        .secure-seal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 18px;
+            font-weight: 600;
+            color: #27ae60;
+        }
+        .testimonials {
+            margin-top: 32px;
+            background: #f7fafd;
+            border-radius: 10px;
+            padding: 18px 10px;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+        }
+        .testimonials h3 {
+            font-size: 1.2rem;
+            color: #222;
+            margin-bottom: 14px;
+        }
+        .testimonial {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+        .testimonial img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid #e0eafc;
+        }
+        .testimonial p {
+            margin: 0;
+            font-size: 1rem;
+            color: #444;
+        }
+        .testimonial span {
+            font-size: 0.95rem;
+            color: #888;
+            margin-left: auto;
+        }
+        footer {
+            margin-top: 32px;
+            text-align: center;
+            color: #888;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 18px 6px;
+                max-width: 98vw;
+            }
+            .vsl-video {
+                max-width: 98vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Assista à VSL Exclusiva</div>
+        <div class="subtitle">Descubra como transformar sua vida com nosso método comprovado!</div>
+        <!-- Oferta especial com contagem regressiva -->
+        <div class="countdown-offer">
+            <div class="offer-text">
+                <i class="fas fa-bolt"></i> Oferta especial termina em:
+                <span id="countdown"></span>
+            </div>
+        </div>
+        <!-- Vídeo do YouTube incorporado corretamente -->
+        <iframe 
+            class="vsl-video"
+            src="https://www.youtube.com/embed/5_BOYWowMlU" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+        <br>
+        <!-- Substitua o href abaixo pelo link da sua página de pagamento -->
+        <a href="SUA_PAGINA_DE_PAGAMENTO_AQUI" class="buy-btn" id="buyBtn">
+            <i class="fas fa-shopping-cart"></i> COMPRE JÁ
+        </a>
+        <div class="trust-section">
+            <div class="trust-icons">
+                <i class="fas fa-lock"></i>
+                <i class="fas fa-shield-alt"></i>
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-paypal"></i>
+            </div>
+            <div class="guarantee">
+                <i class="fas fa-check-circle"></i>
+                Garantia de 7 dias: Satisfação ou seu dinheiro de volta!
+            </div>
+        </div>
+        <!-- Selo de Compra Segura -->
+        <div class="secure-seal">
+            <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Compra Segura" width="48">
+            <span>Compra 100% Segura</span>
+        </div>
+        <!-- Depoimentos de clientes -->
+        <div class="testimonials">
+            <h3>O que dizem nossos clientes:</h3>
+            <div class="testimonial">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente 1">
+                <p>"Esse método mudou minha vida! Recomendo a todos."</p>
+                <span>- João Silva</span>
+            </div>
+            <div class="testimonial">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente 2">
+                <p>"Simples, prático e realmente funciona."</p>
+                <span>- Maria Souza</span>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>© 2025 IDEIAS INCRIVEIS | @IDEIASGENIAIS | CNPJ: 32.754.399/0001-32</p>
+    </footer>
+    <script>
+        // Efeito de destaque no botão ao clicar
+        document.getElementById('buyBtn').addEventListener('click', function(e) {
+            this.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1.06)';
+            }, 120);
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 350);
+        });
+
+        // Scroll suave para o vídeo se o usuário acessar por âncora
+        if(window.location.hash === "#video") {
+            setTimeout(() => {
+                document.querySelector('.vsl-video').scrollIntoView({behavior: "smooth"});
+            }, 400);
+        }
+
+        // Contagem regressiva de oferta especial (15 minutos)
+        function startCountdown(minutes) {
+            let seconds = minutes * 60;
+            const countdownEl = document.getElementById('countdown');
+            function updateCountdown() {
+                const min = Math.floor(seconds / 60);
+                const sec = seconds % 60;
+                countdownEl.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+                if (seconds > 0) {
+                    seconds--;
+                    setTimeout(updateCountdown, 1000);
+                } else {
+                    countdownEl.textContent = "00:00";
+                }
+            }
+            updateCountdown();
+        }
+        startCountdown(15);
+    </script>
+</body>
+</html>
